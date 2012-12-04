@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clicker Web Application</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body class='<%= controller.controller_name %>'>
+<h1>Clicker Web App</h1>
+
+<% if session[:user_id] %>
+	<p>Welcome, <%= User.find(session[:user_id]).name.capitalize %></p>
+	<%= button_to 'Logout', logout_path, method: :delete %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
